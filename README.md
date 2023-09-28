@@ -62,7 +62,7 @@ To create the attack sequence, I utilized the legacy animation built into the ch
 
 In order for the barrels to be destroyed, I created a spherical collider at the tip of the sword and made it a trigger.  Using the booleans of isSwinging and the tag of the projectiles (barrels), the barrels were destroyed once they came within the spherical collider.  I also created a particle system that had the appearance of sparks that would play only if the attack landed on the barrels.
 
-![BarrelDestroy](./BKGifandSS/BarrelDestroyviaSwordSystem.png)
+![BarrelDestroy](./BKGifandSS/BarrelDestoryviaSwordSystem.png)
 
 ### Death and Respawn
 Controlled by the game manager, the player was given three lives in order to complete the game.  The following function handled his death and subsequent respawns.
