@@ -15,7 +15,7 @@ Repository for my work on the C# and Unity Live Project.  The premise was to des
 - Collaboration with team utilizing Microsoft Azure DevOps
 - Experience working within an Agile/Scrum environment
 
-### Level
+## Level
 Each new level was procedurally generated from an array of prefab pieces.
 
 ![Level Generator Code](./BKGifandSS/LeftSideLevelGen.png)
@@ -26,7 +26,7 @@ Depending on what level you are on, the application chooses from a range of spec
 
 In this clip you can also see that there is a win condition on level 10, and it sends the player to a game win scene.
 
-### Scenes
+## Scenes
 There are four main scenes in this game.  The first is the opening scene in which the user is greeted by Burro Kong himself performing a simple haka to ward off the player.  He is accompanied by the controls list, the scoring regime and an entrance button to move to the next scene.
 
 ![Opening](./BKGifandSS/BKOpening.gif)
@@ -43,15 +43,15 @@ The final scene is a game over scene that a player reaches if they have either b
 
 ![GameOver](./BKGifandSS/GameOverScene.gif)
 
-### Main Character
+## Main Character
 The player controlled character has three main actions.  The player can move left and right, jump or attack barrels.  The movement is done by applying force to the Rigidbody on the pawn.  This was done because it was the most efficient way to apply the level of control to both the jump and movement controls. 
 
-#### Movement
+### Movement
 ![PlayerMovement](./BKGifandSS/BasicPlayerMovement.png)
 
 The asset for the main character is a free asset that was utilized from the Unity Asset Store.  Due to the nature of the project, only free assets were allowed to be used.  I chose this character because he had the best appearance for the aesthetic of the game.  I understand a samurai would never fight an exotic jungle king, but hey, stranger things have happened in video games.  Due to the nature of the asset, it came pre-designed with legacy animations.  This is why his animations are all triggered based upon movements and scripted into him using the playerAnimations.Play() function.  The movement!=Vector3.zero condition and subsequent code were used to control which director the character was facing.  This was done becuase in order to keep the character on the platforms and give the appearance of a 2D game, his transform rotations were locked.
 
-#### Attack
+### Attack
 What is the point of carrying a sword if you do not intend to use it?  The idea behind the attack feature was implented because I liked the look of the samurai holding the sword.  
 
 ![Attack](./BKGifandSS/Attack.gif)
@@ -64,21 +64,21 @@ In order for the barrels to be destroyed, I created a spherical collider at the 
 
 ![BarrelDestroy](./BKGifandSS/BarrelDestroyviaSwordSystem.png)
 
-#### Death and Respawn
+### Death and Respawn
 Controlled by the game manager, the player was given three lives in order to complete the game.  The following function handled his death and subsequent respawns.
 
 ![DeathandRespawn](./BKGifandSS/DeathandRespawn.png)
 
 The "game" object was the game manager that handled the lives, score and round counters.  A bodiless transform was implemented in the game as the general spawn location for the hero, and it was coded into the hero as the public variable "spawner" meaning I could change its spawn location at will.
 
-### Burro Kong
+## Burro Kong
 The main protagonist was a simple asset that played an entrance animation on Start() and then made use of the InvokeRepeating() function to spawn barrels and play a simple animation at set intervals.  These intervals were dependent on a throwSpeed variable that was controlled by the game manager script.  The throw speed would increase with each level by .75.  Burro Kong's main program was run in Awake() so that it would begin throwing barrels once the main scene was reloaded.
 
 ![BarrelThrow](./BKGifandSS/VariableThrowSpeed.png)
 
 The barrels were spawned above BK's head and then pushed with an automatic AddForce().  This was because each barrel was given a Rigidbody which served several purposes.  Gravity enacting on the barrels not only gave a realistic motion to the barrels vertically, but it also created the realistic rotation of the barrels so that the player can judge which direction they were going or if they were going to transition to another direction.
 
-### Other Coding Highlights
+## Other Coding Highlights
 To control the scoring, round and lives counters and ensure they were constantly updated, I created a simple loop that would iterate between all of the text components looking for the correct Name.  Each text compoenent was given a name since Tags and Layers were not specific enough to each box.  Then, when the currentScore/Round?Lives/HighScore were updated via the game manager, this perpetually running loop would update the values.
 
 ![LoopArraytoFindText](./BKGifandSS/LoopArraytofindtext.png)
